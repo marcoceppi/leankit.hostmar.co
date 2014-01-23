@@ -20,11 +20,15 @@ class Github extends Redirect {
 }
 
 class LaunchPad extends Redirect {
-  public $host = 'https://github.com';
+  public $host = 'http://pad.lv';
 
   public function parse($url) {
-    list($user, $repo, $bug) = explode('/', $url, 3);
-    $this->redirect($user . '/' . $repo . '/issues/' . $bug);
+    if(is_numeric($url)) {
+      return $this->redirect($url);
+    }
+
+    $this->host = 'https://launchpad.net/';
+    $this->redirect($url);
   }
 }
 
