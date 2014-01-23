@@ -7,7 +7,7 @@ abstract class Redirect {
     header('Location: ' . $url);
   }
 
-  abstract public function parse($url)
+  abstract public function parse($url);
 }
 
 class Github extends Redirect {
