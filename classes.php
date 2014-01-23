@@ -3,7 +3,7 @@
 abstract class Redirect {
   public $host = NULL;
   public function redirect($address) {
-    $url = $host . '/' . $address;
+    $url = $this->host . '/' . $address;
     header('Location: ' . $url);
   }
 
