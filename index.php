@@ -2,7 +2,8 @@
 
 require_once('classes.php');
 
-$protocols = array('lp' => LaunchPad, 'gh' => Github, 'cr' => CodeReview);
+$protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
+                   'cr' => new CodeReview());
 
 function backflip($raw, $proto) {
   list($s, $d) = explode(':', $raw, 2);
@@ -11,12 +12,12 @@ function backflip($raw, $proto) {
     die();
   }
 
-  $c = $protocols[$s]();
-  $c->parse($d);
+  $protocols[$s]->parse($d);
 }
 
 if(!isset($_GET['r'])) {
-  die("<h1>Go away</h1><br><br>https://github.com/marcoceppi/leankit.hostmar.co");
+  die("<h1>Go away</h1><br><br>
+       https://github.com/marcoceppi/leankit.hostmar.co");
 }
 
 backflip($_GET['r'], $protocols);
