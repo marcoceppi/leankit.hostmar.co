@@ -12,7 +12,7 @@ function backflip($raw, $proto) {
     die();
   }
 
-  $protocols[$s]->parse($d);
+  $proto[$s]->parse($d);
 }
 
 if(!isset($_GET['r'])) {
