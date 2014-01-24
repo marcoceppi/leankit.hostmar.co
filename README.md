@@ -12,6 +12,10 @@ Use `gh:<user>/<repo>/<issue>` to link to either a merge request or a Github bug
 
 Use `lp:<bug-number>` to link to a LaunchPad bug.
 
+Use `lp:<project>/<merge-id>` to get a merge proposal for that project
+
+Use `lp:<distro>/<source>/<merge-id>` to link to a merge proposal for a source package in a distro (hint, charms is a distro)
+
 ### CodeReview
 
 Use `cr:<request>` to link to a CodeReview on http://codereview.appspot.com

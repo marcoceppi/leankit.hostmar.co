@@ -8,7 +8,12 @@ abstract class Redirect {
   public function __construct() {}
 
   public function redirect($address) {
-    $url = $this->host . '/' . $address;
+    if($this->host) {
+      $url = $this->host . '/' . $address;
+    } else {
+      $url = $address;
+    }
+
     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
     header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT');
     header('Cache-Control: no-store, no-cache, must-revalidate');
@@ -36,8 +41,25 @@ class LaunchPad extends Redirect {
       return $this->redirect($url);
     }
 
-    $this->host = 'https://launchpad.net/';
-    $this->redirect($url);
+    $distro = '';
+    switch(substr_count($url, '/')) {
+      case 2:
+        list($distro, $url) = explode('/', $url, 2);
+      case 1:
+        list($project, $merge_id) = explode('/', $url);
+      break;
+      default:
+        die($url . ' is not a valid LP shortcut');
+      break;
+    }
+
+    $cmd = "./lp-merge.py $distro $project $merge_id";
+    exec(escapeshellcmd($cmd), $output, $exit_code);
+    if($exit_code > 0) {
+      die($url . ' was not found on lp<br>' . implode('<br>', $output));
+    }
+
+    $this->redirect($output[0]);
   }
 }
 
