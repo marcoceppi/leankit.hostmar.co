@@ -41,6 +41,8 @@ class LaunchPad extends Redirect {
       return $this->redirect($url);
     }
 
+    $this->host = NULL;
+
     $distro = '';
     switch(substr_count($url, '/')) {
       case 2:
