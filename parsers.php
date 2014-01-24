@@ -48,3 +48,7 @@ class CodeReview extends Redirect {
     $this->redirect($url);
   }
 }
+
+// UPDATE WITH NEW ONES
+$protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
+                   'cr' => new CodeReview());

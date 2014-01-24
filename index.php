@@ -1,9 +1,7 @@
 <?php
 
-require_once('classes.php');
 
-$protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
-                   'cr' => new CodeReview());
+require_once('parsers.php');
 
 function backflip($raw, $proto) {
   list($s, $d) = explode(':', $raw, 2);
