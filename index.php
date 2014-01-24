@@ -1,5 +1,9 @@
 <?php
 
+if(!isset($_GET['r'])) {
+  die("<h1>Go away</h1><br><br>
+       https://github.com/marcoceppi/leankit.hostmar.co");
+}
 
 require_once('parsers.php');
 
@@ -11,11 +15,6 @@ function backflip($raw, $proto) {
   }
 
   $proto[$s]->parse($d);
-}
-
-if(!isset($_GET['r'])) {
-  die("<h1>Go away</h1><br><br>
-       https://github.com/marcoceppi/leankit.hostmar.co");
 }
 
 backflip($_GET['r'], $protocols);
