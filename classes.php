@@ -40,7 +40,7 @@ class LaunchPad extends Redirect {
 }
 
 class CodeReview extends Redirect {
-  public $host = 'https://github.com';
+  public $host = 'https://codereview.appspot.com';
 
   public function parse($url) {
     $this->redirect($url);
