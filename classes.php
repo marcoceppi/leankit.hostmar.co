@@ -1,7 +1,10 @@
 <?php
 
 abstract class Redirect {
-  public $host = NULL;
+  public $host;
+
+  abstract public function parse($url);
+
   public function redirect($address) {
     $url = $this->host . '/' . $address;
     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
@@ -12,8 +15,6 @@ abstract class Redirect {
 
     header('Location: ' . $url);
   }
-
-  abstract public function parse($url);
 }
 
 class Github extends Redirect {
