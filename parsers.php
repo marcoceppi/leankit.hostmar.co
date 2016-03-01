@@ -73,6 +73,14 @@ class CodeReview extends Redirect {
   }
 }
 
+class Asana extends Redirect {
+  public $host = 'https://app.asana.com/0';
+
+  public function parse($url) {
+    $this->redirect($url);
+  }
+}
+
 // UPDATE WITH NEW ONES
 $protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
-                   'cr' => new CodeReview());
+                   'cr' => new CodeReview(), 'ass' => new Asana());
