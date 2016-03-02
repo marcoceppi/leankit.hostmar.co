@@ -33,6 +33,14 @@ class Github extends Redirect {
   }
 }
 
+class OpenStackReview extends Redirect {
+  public $host = 'https://review.openstack.org/#/c';
+
+  public function parse($url) {
+    $this->redirect($url);
+  }
+}
+
 class LaunchPad extends Redirect {
   public $host = 'http://pad.lv';
 
@@ -83,4 +91,5 @@ class Asana extends Redirect {
 
 // UPDATE WITH NEW ONES
 $protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
-                   'cr' => new CodeReview(), 'ass' => new Asana());
+                   'cr' => new CodeReview(), 'ass' => new Asana(),
+                   'or' => new OpenStackReview());
