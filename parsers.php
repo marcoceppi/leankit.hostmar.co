@@ -89,7 +89,19 @@ class Asana extends Redirect {
   }
 }
 
-// UPDATE WITH NEW ONES
-$protocols = array('lp' => new LaunchPad(), 'gh' => new Github(),
-                   'cr' => new CodeReview(), 'ass' => new Asana(),
-                   'or' => new OpenStackReview());
+class ApacheJira extends Redirect {
+  public $host = 'https://issues.apache.org/jira/browse';
+
+  public function parse($url) {
+    $this->redirect($url);
+  }
+}
+
+$protocols = array(
+  'lp' => new LaunchPad(),
+  'gh' => new Github(),
+  'cr' => new CodeReview(),
+  'ass' => new Asana(),
+  'or' => new OpenStackReview(),
+  'apache' => new ApacheJira()
+);
