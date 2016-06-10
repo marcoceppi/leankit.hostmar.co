@@ -28,8 +28,13 @@ class Github extends Redirect {
   public $host = 'https://github.com';
 
   public function parse($url) {
-    list($user, $repo, $bug) = explode('/', $url, 3);
-    $this->redirect($user . '/' . $repo . '/issues/' . $bug);
+    if (substr_count($url, '/') > 2) {
+        # support e.g., gh:user/repo/tree/branch or gh:user/repo/pull/10
+        $this->redirect($url);
+    } else {
+        list($user, $repo, $bug) = explode('/', $url, 3);
+        $this->redirect($user . '/' . $repo . '/issues/' . $bug);
+    }
   }
 }
 

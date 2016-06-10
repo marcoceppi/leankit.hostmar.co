@@ -8,6 +8,8 @@ Leankit's cool, and it has this URL card magic. So this allows you to support mu
 
 Use `gh:<user>/<repo>/<issue>` to link to either a merge request or a Github bug for that repo.
 
+Use `gh:<user>/<repo>/tree/<branch>` to link to a branch.
+
 ### LaunchPad
 
 Use `lp:<bug-number>` to link to a LaunchPad bug.
