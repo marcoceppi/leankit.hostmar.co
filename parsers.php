@@ -46,6 +46,14 @@ class OpenStackReview extends Redirect {
   }
 }
 
+class OpenStackTopic extends Redirect {
+  public $host = 'https://review.openstack.org/#/q';
+
+  public function parse($url) {
+    $this->redirect('topic:' . $url);
+  }
+}
+
 class LaunchPad extends Redirect {
   public $host = 'http://pad.lv';
 
@@ -108,5 +116,6 @@ $protocols = array(
   'cr' => new CodeReview(),
   'ass' => new Asana(),
   'or' => new OpenStackReview(),
+  'ot' => new OpenStackTopic(),
   'apache' => new ApacheJira()
 );
